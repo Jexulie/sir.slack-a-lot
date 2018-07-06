@@ -20,9 +20,11 @@ gulp.task('minify', () => {
         .pipe(gulp.dest('build/min'));
 });
 
-gulp.task('default', ['babelify', 'minify']);
-
-var watcher = gulp.watch(['src/**/*.js', 'build/js/*.js'], ['babelify', 'minify']);
-watcher.on('change', event => {
-    console.info('Fixin Things....');
+gulp.task('watchify', () => {
+    var watcher = gulp.watch(['src/**/*.js', 'build/js/*.js'], ['babelify', 'minify']);
+    watcher.on('change', event => {
+        console.info('Fixin Things....');
+    });
 });
+
+gulp.task('default', ['watchify']);
