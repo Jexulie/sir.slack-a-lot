@@ -91,6 +91,9 @@ bot.on('message', msg => {
     if(/-createchannel/ig.test(msg.content)){
         M.createChannel(msg);
     }
+    if(/-join/ig.test(msg.content)){
+        M.joinChannel(msg);
+    }
     if(/-memberlist/ig.test(msg.content)){
         M.showMembers(msg);
     }
@@ -100,6 +103,7 @@ bot.on('message', msg => {
     if(/-leave/ig.test(msg.content)){
         M.leaveGuild(msg);
     }
+    
     /**
      * Profile
      */
@@ -114,6 +118,9 @@ bot.on('message', msg => {
     if(/-ping/ig.test(msg.content)){
         U.showPing(msg);
     }
+    if(/-senddm/ig.test(msg.content)){
+        U.sendDM(msg);
+    }
     /**
      * Search
      */
@@ -123,7 +130,9 @@ bot.on('message', msg => {
     /**
      * Info
      */
-
+    if(/-guildinfo/ig.test(msg.content)){
+        I.showGuildInfo(msg);
+    }
     /**
      * Permission
      */
@@ -133,8 +142,15 @@ bot.on('message', msg => {
      */
     
     if(/-test/ig.test(msg.content)){
-        // console.log(msg.guild.iconURL)
-        msg.reply(msg.guild.createChannel())
+        
+        // let r = msg.guild.member('229362051959488522') get member then username/msg
+        // console.log(r.user.username)
+        // msg.reply(r.lastMessage.content)
+        
+        // msg.guild.fetchMember(msg.author).then(msg.reply)
+        
+        // msg.delete().then(msg.reply) // test this
+        
         // Direct msg - msg.author.sendMessage('Hello Cutey')
     }
 });

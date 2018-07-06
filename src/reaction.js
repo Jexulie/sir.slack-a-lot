@@ -1,7 +1,7 @@
 class Reaction{
 
-    cheer(){
-
+    cheer(msg){
+        msg.react(':confetti_ball:')
     }
 
     smug(){

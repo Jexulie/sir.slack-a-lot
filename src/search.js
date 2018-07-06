@@ -4,8 +4,8 @@ import auth from './auth.json';
 
 class Search{
 
-    searchGoogle(){
-
+    searchGoogle(msg){
+        
     }
 
     searchUrbanDict(){

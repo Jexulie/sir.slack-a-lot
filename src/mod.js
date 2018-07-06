@@ -74,6 +74,11 @@ class Mod{
     removeChannel(){
         
     }
+    
+    joinChannel(msg){
+        msg.member.voiceChannel.join();
+        msg.reply(`Who Called Me From ${msg.member.voiceChannel.name} Channel?`);
+    }
 
     leaveGuild(msg){
         msg.guild.leave()

@@ -89,6 +89,14 @@ class Util {
 
     }
 
+    // needs fixing
+    sendDM(msg){
+        let content = /-senddm (.*) (.*)/ig.exec(msg.content)
+        let to = content[1];
+        let message = content[2];
+        msg.author.sendMessage(`${msg.author.username} said: ${message}`)
+    }
+
 }
 
 export default Util;
