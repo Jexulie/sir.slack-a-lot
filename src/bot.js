@@ -160,11 +160,11 @@ bot.on('guildMemberAdd', member => {
 });
 
 bot.on('disconnect', member => {
-    A.sayGoodBye(member);
+    
 });
 
 bot.on('reconnecting', member => {
-    A.sayReconnecting(member);
+    
 });
 
 /**
