@@ -24,8 +24,12 @@ class Util {
 
     }
 
-    getAvatarURL() {
-
+    getAvatarURL(msg, bot) {
+        var user  = /-getavatar (.*)/ig.exec(msg.content);
+        var name = user[1];
+        var url = bot.users.find('username', name);
+        console.log(url)
+        msg.reply(`${user[1]}'s avatar -> ${url.avatar}`);
     }
 
     showCmdList(msg) {
@@ -90,11 +94,14 @@ class Util {
     }
 
     // needs fixing
-    sendDM(msg){
-        let content = /-senddm (.*) (.*)/ig.exec(msg.content)
-        let to = content[1];
-        let message = content[2];
-        msg.author.sendMessage(`${msg.author.username} said: ${message}`)
+    sendDM(msg, bot){
+        let content = /-senddm (.*) (.*)/ig.exec(msg.content);
+        let to = content[1].trim();
+        let fid = bot.users.find('username', to);
+        let id = fid.user.id;
+        let message = content[2].trim();
+        
+        msg.author.sendMessage(`${msg.author.username} said: ${message}`);
     }
 
 }

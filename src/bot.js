@@ -1,4 +1,4 @@
-import Discord from 'discord.js';
+import Discord, { User } from 'discord.js';
 import logger from './logger';
 import auth from './auth.json';
 
@@ -12,6 +12,7 @@ import Profile from './profile';
 import Util from './util';
 import Search from './search';
 import Reaction from './reaction';
+import { userInfo } from 'os';
 
 
 /**
@@ -119,7 +120,10 @@ bot.on('message', msg => {
         U.showPing(msg);
     }
     if(/-senddm/ig.test(msg.content)){
-        U.sendDM(msg);
+        U.sendDM(msg, bot);
+    }
+    if(/-getavatar/ig.test(msg.content)){
+        U.getAvatarURL(msg, bot);
     }
     /**
      * Search
@@ -142,6 +146,11 @@ bot.on('message', msg => {
      */
     
     if(/-test/ig.test(msg.content)){
+        msg.member.voiceChannel.join()
+            .then(c => {
+                let d = c.playOpusStream('https://www.youtube.com/watch?v=dNoTvg0t52c')
+            })
+            .catch(console.error)
         
         // let r = msg.guild.member('229362051959488522') get member then username/msg
         // console.log(r.user.username)
@@ -152,6 +161,14 @@ bot.on('message', msg => {
         // msg.delete().then(msg.reply) // test this
         
         // Direct msg - msg.author.sendMessage('Hello Cutey')
+
+        // get user by id
+        // var f = msg.channel.members
+        // var q = f.find('id', '240867423761334272')
+        // console.log(q.user)
+
+        // var p = bot.users.find('username', 'Hoot')
+        // console.log(p)
     }
 });
 
